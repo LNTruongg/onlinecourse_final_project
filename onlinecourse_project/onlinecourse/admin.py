@@ -5,7 +5,10 @@ from .models import (
     Question,
     Choice,
     Submission,
+    Instructor,
+    Learner,
 )
+
 
 class ChoiceInline(admin.TabularInline):
     model = Choice
@@ -24,6 +27,7 @@ class QuestionAdmin(admin.ModelAdmin):
 
 class LessonAdmin(admin.ModelAdmin):
     list_display = ('title', 'course')
+    inlines = [QuestionInline]
 
 
 admin.site.register(Course)
@@ -31,3 +35,5 @@ admin.site.register(Lesson, LessonAdmin)
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Choice)
 admin.site.register(Submission)
+admin.site.register(Instructor)
+admin.site.register(Learner)
